@@ -14,13 +14,16 @@ public class JournalEntry {
 
     private LocalDate submittedDate;
 
+    private String title;
+
     private String content;
 
     public JournalEntry() {
     }
 
-    public JournalEntry(LocalDate submittedDate, String content) {
+    public JournalEntry(LocalDate submittedDate, String title, String content) {
         this.submittedDate = submittedDate;
+        this.title = title;
         this.content = content;
     }
 
@@ -38,6 +41,14 @@ public class JournalEntry {
 
     public void setSubmittedDate(LocalDate submittedDate) {
         this.submittedDate = submittedDate;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {

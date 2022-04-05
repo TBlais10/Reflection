@@ -4,6 +4,7 @@ import careerdevs.reflection.Auth.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Profile {
@@ -21,6 +22,9 @@ public class Profile {
     @JoinColumn(name="user_id", referencedColumnName = "id")
     @JsonIgnore
     private User user;
+
+    @OneToMany
+    private Set<JournalEntry> journalEntries;
 
     public Profile() {
     }
@@ -80,5 +84,13 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<JournalEntry> getJournalEntries() {
+        return journalEntries;
+    }
+
+    public void setJournalEntries(Set<JournalEntry> journalEntries) {
+        this.journalEntries = journalEntries;
     }
 }
