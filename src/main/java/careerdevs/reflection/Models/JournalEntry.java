@@ -12,7 +12,7 @@ public class JournalEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate submittedDate;
+    private LocalDate date;
 
     private String title;
 
@@ -21,8 +21,7 @@ public class JournalEntry {
     public JournalEntry() {
     }
 
-    public JournalEntry(LocalDate submittedDate, String title, String content) {
-        this.submittedDate = submittedDate;
+    public JournalEntry(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -35,12 +34,12 @@ public class JournalEntry {
         this.id = id;
     }
 
-    public LocalDate getSubmittedDate() {
-        return submittedDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setSubmittedDate(LocalDate submittedDate) {
-        this.submittedDate = submittedDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getTitle() {

@@ -2,6 +2,7 @@ package careerdevs.reflection.Models;
 
 import careerdevs.reflection.Auth.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class Profile {
     private User user;
 
     @OneToMany
+    @JsonIncludeProperties({"date", "title"})
     private Set<JournalEntry> journalEntries;
 
     public Profile() {

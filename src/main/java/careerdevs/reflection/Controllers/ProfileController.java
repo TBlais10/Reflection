@@ -1,7 +1,6 @@
 package careerdevs.reflection.Controllers;
 
 import careerdevs.reflection.Auth.User;
-import careerdevs.reflection.Models.Avatar;
 import careerdevs.reflection.Models.Profile;
 import careerdevs.reflection.Repositories.AvatarRepository;
 import careerdevs.reflection.Repositories.ProfileRepository;
@@ -78,8 +77,8 @@ public class ProfileController {
 
         if (updates.getfName() != null) profile.setfName(updates.getfName());
         if (updates.getlName() != null) profile.setlName(updates.getlName());
-        if (updates.getState() != null) profile.setState(updates.getState());
         if (updates.getTown() != null) profile.setTown(updates.getTown());
+        if (updates.getState() != null) profile.setState(updates.getState());
 
         return repository.save(profile);
     }
