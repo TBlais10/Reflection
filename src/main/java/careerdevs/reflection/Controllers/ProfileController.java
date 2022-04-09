@@ -49,6 +49,16 @@ public class ProfileController {
        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/self")
+    public @ResponseBody Profile getSelf(){
+        User currentUser = userService.getCurrentUser();
+
+        if (currentUser == null){
+            return null;
+        }
+        return repository.findByUser_id(currentUser.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     //Post New Profile
     @PostMapping
     public ResponseEntity<Profile> createProfile(@RequestBody Profile newProfile){
@@ -65,8 +75,8 @@ public class ProfileController {
     }
 
     //Put update profile
-    @PutMapping("/{id}")
-    public @ResponseBody Profile updateProfile(@PathVariable Long id, @RequestBody Profile updates){
+    @PutMapping
+    public @ResponseBody Profile updateProfile(@RequestBody Profile updates){
         User currentUser = userService.getCurrentUser();
 
         if (currentUser == null){
