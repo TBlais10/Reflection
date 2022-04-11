@@ -30,11 +30,11 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public Set<String> getRole() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRole(Set<String> role) {
-        this.roles = role;
+    public void setRole(Set<String> roles) {
+        this.roles = roles;
     }
 }

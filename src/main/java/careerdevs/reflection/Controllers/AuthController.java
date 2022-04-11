@@ -58,6 +58,12 @@ public class AuthController {
     @Value("${spring.datasource.url}")
     public String myUrl;
 
+    @Value("${spring.datasource.username}")
+    public String username;
+
+    @Value("${spring.datasource.password}")
+    public String password;
+
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -86,23 +92,23 @@ public class AuthController {
         }
 
         User user = new User(signupRequest.getUsername(), encoder.encode(signupRequest.getPassword()));
-        Set<String> strRoles = new HashSet<>();
+        Set<String> strRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
         // TODO: 4/7/2022 Refactor to new class 
         int roleCheck = roleRepository.isRoleEmpty();
 
         if (roleCheck < ERole.values().length) {
-            int id = 0;
+            int id = 1;
             for (ERole role : ERole.values()) {
                 if (roleRepository.findByName(role).isEmpty()) {
                     try {
-                        Connection conn = DriverManager.getConnection(myUrl, "reflect", "whoiam");
+                        Connection conn = DriverManager.getConnection(myUrl, username, password);
                         Class.forName(myDriver);
                         String query = "Insert into role (id, name) values (?,?)";
                         PreparedStatement statement = conn.prepareStatement(query);
 
-                        statement.setString(1, Integer.toString(++id));
+                        statement.setString(1, Integer.toString(id));
                         statement.setString(2, role.toString());
 
                         statement.executeUpdate();
@@ -113,6 +119,7 @@ public class AuthController {
 
                     }
                 }
+                id++;
             }
         }
 
