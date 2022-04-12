@@ -114,9 +114,7 @@ public class AuthController {
                         statement.executeUpdate();
 
                     } catch (Exception e) {
-                        Logger logger = LoggerFactory.getLogger(AuthController.class);
                         System.out.println(e.getMessage());
-
                     }
                 }
                 id++;
