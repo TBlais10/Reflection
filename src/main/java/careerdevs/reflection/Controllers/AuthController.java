@@ -95,32 +95,6 @@ public class AuthController {
         Set<String> strRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
-        // TODO: 4/7/2022 Refactor to new class 
-        int roleCheck = roleRepository.isRoleEmpty();
-
-        if (roleCheck < ERole.values().length) {
-            int id = 1;
-            for (ERole role : ERole.values()) {
-                if (roleRepository.findByName(role).isEmpty()) {
-                    try {
-                        Connection conn = DriverManager.getConnection(myUrl, username, password);
-                        Class.forName(myDriver);
-                        String query = "Insert into role (id, name) values (?,?)";
-                        PreparedStatement statement = conn.prepareStatement(query);
-
-                        statement.setString(1, Integer.toString(id));
-                        statement.setString(2, role.toString());
-
-                        statement.executeUpdate();
-
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-                id++;
-            }
-        }
-
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: Role is not found"));
             roles.add(userRole);
