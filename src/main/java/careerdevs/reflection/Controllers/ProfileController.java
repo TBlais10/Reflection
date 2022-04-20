@@ -59,6 +59,12 @@ public class ProfileController {
         return repository.findByUser_id(currentUser.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    //Searches for User By username
+    @GetMapping("/{username}")
+    public @ResponseBody User findByUsername(String username){
+        return userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     //Post New Profile
     @PostMapping
     public ResponseEntity<Profile> createProfile(@RequestBody Profile newProfile){
