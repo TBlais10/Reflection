@@ -40,7 +40,7 @@ public class ReflectionApplication {
 	}
 
 	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+	public void loadENums() {
 		int roleCheck = roleRepository.isRoleEmpty();
 
 		if (roleCheck < ERole.values().length) {
@@ -64,7 +64,5 @@ public class ReflectionApplication {
 				id++;
 			}
 		}
-		return builder.build();
 	}
-
 }
