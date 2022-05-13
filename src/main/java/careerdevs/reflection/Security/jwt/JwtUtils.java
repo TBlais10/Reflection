@@ -1,7 +1,6 @@
 package careerdevs.reflection.Security.jwt;
 
 import careerdevs.reflection.Security.services.UserDetailsImpl;
-import ch.qos.logback.core.encoder.EchoEncoder;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
