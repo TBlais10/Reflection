@@ -32,8 +32,7 @@ public class ProfileController {
 
     //Get all
     @GetMapping
-    public @ResponseBody
-    List<Profile> getAll(){
+    public @ResponseBody List<Profile> getAll(){
         return repository.findAll();
     }
 
@@ -68,7 +67,6 @@ public class ProfileController {
     //Post New Profile
     @PostMapping
     public ResponseEntity<Profile> createProfile(@RequestBody Profile newProfile){
-
         User currentUser = userService.getCurrentUser();
 
         if (currentUser == null){
@@ -91,8 +89,8 @@ public class ProfileController {
 
         Profile profile = repository.findByUser_id(currentUser.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        if (updates.getfName() != null) profile.setfName(updates.getfName());
-        if (updates.getlName() != null) profile.setlName(updates.getlName());
+        if (updates.getFname() != null) profile.setFname(updates.getFname());
+        if (updates.getLname() != null) profile.setLname(updates.getLname());
         if (updates.getTown() != null) profile.setTown(updates.getTown());
         if (updates.getState() != null) profile.setState(updates.getState());
 

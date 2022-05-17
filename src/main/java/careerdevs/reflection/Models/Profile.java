@@ -13,8 +13,8 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fName;
-    private String lName;
+    private String fname;
+    private String lname;
     private long age;
     private String town;
     private String state;
@@ -31,29 +31,29 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String fName, String lName, long age, String town, String state, User user) {
-        this.fName = fName;
-        this.lName = lName;
+    public Profile(String fname, String lname, long age, String town, String state, User user) {
+        this.fname = fname;
+        this.lname = lname;
         this.age = age;
         this.town = town;
         this.state = state;
         this.user = user;
     }
 
-    public String getfName() {
-        return fName;
+    public String getFname() {
+        return fname;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getlName() {
-        return lName;
+    public String getLname() {
+        return lname;
     }
 
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public long getAge() {
