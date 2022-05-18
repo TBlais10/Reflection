@@ -11,7 +11,7 @@ import java.util.Set;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String fname;
     private String lname;
@@ -38,6 +38,14 @@ public class Profile {
         this.town = town;
         this.state = state;
         this.user = user;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFname() {
