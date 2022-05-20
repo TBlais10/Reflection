@@ -16,6 +16,7 @@ public class Profile {
     private String fname;
     private String lname;
     private long age;
+    private String gender;
     private String town;
     private String state;
 
@@ -31,10 +32,11 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String fname, String lname, long age, String town, String state, User user) {
+    public Profile(String fname, String lname, long age, String gender, String town, String state, User user) {
         this.fname = fname;
         this.lname = lname;
         this.age = age;
+        this.gender = gender;
         this.town = town;
         this.state = state;
         this.user = user;
@@ -70,6 +72,14 @@ public class Profile {
 
     public void setAge(long age) {
         this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getTown() {

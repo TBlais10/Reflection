@@ -91,6 +91,7 @@ public class ProfileController {
 
         if (updates.getFname() != null) profile.setFname(updates.getFname());
         if (updates.getLname() != null) profile.setLname(updates.getLname());
+        if (updates.getGender() != null) profile.setGender((updates.getGender()));
         if (updates.getTown() != null) profile.setTown(updates.getTown());
         if (updates.getState() != null) profile.setState(updates.getState());
 

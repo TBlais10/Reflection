@@ -54,7 +54,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-//                .antMatchers("api/journal/**").permitAll(); // TODO: 3/31/2022 Implement Journal class and refer to these routes
+                .antMatchers("api/Entries/**").permitAll() // TODO: 3/31/2022 Implement Journal class and refer to these routes
+//                .antMatchers("api/Entries/**").permitAll() //structure for adding routes
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
