@@ -79,7 +79,7 @@ public class ProfileController {
     }
 
     //Put update profile
-    @PutMapping
+    @PatchMapping
     public @ResponseBody Profile updateProfile(@RequestBody Profile updates){
         User currentUser = userService.getCurrentUser();
 

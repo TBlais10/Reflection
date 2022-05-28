@@ -65,7 +65,7 @@ public class JournalEntryController {
     }
 
     //Put update entry
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public @ResponseBody JournalEntry updateEntry(@PathVariable Long id, @RequestBody JournalEntry updates){
         User currentUser = userService.getCurrentUser();
 
